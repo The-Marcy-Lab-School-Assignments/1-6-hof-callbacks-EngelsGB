@@ -1,20 +1,22 @@
 const myEvery = (arr, callback) => {
   for (const value of arr) {
-    if (callback) return false;
+    if (!callback(value)) return false;
   }
   return true;
 };
 
 const sortUsersBy = (users, sortingFunction) => {
-  return [...users].sort(sortingFunction());
+  return [...users].sort(sortingFunction);
 };
 
+const names = ['Alice', 'Bob', 'Charlie', 'Diana'];
 const logEachName = (names) => {
-  return names.forEach(console.log());
+  names.forEach((e, i, a) => console.log(e, i, a));
 };
+logEachName(names);
 
 const logEachUserBio = (users) => {
-  return users.forEach(console.log(users.bio));
+  users.forEach((e) => console.log(e.bio));
 };
 
 module.exports = {
